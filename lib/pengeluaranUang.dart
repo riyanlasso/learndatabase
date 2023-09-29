@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:learndatabase/database.dart';
 
-class createData extends StatefulWidget {
-  const createData({Key? key}) : super(key: key);
+class pengeluaranUang extends StatefulWidget {
+  const pengeluaranUang({Key? key}) : super(key: key);
 
   @override
-  State<createData> createState() => _createDataState();
+  State<pengeluaranUang> createState() => _pengeluaranUangState();
 }
 
-class _createDataState extends State<createData> {
+class _pengeluaranUangState extends State<pengeluaranUang> {
   DatabaseInstance databaseInstance = DatabaseInstance();
   TextEditingController uangController = TextEditingController();
   TextEditingController keteranganController = TextEditingController();
@@ -43,11 +43,11 @@ class _createDataState extends State<createData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Create Data')),
+      appBar: AppBar(title: Text('Pengeluaran Uang Data')),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Tambah Pemasukan'),
+            Text('Tambah Pengeluaran'),
             Text('Tanggal'),
             TextFormField(
               controller: dateController,
@@ -71,7 +71,7 @@ class _createDataState extends State<createData> {
             ElevatedButton(
               onPressed: () async {
                 await databaseInstance.insert({
-                  'status': '1',
+                  'status': '2',
                   'jumlah_Uang': uangController.text,
                   'keterangan': keteranganController.text,
                   'tanggal': dateController.text,
@@ -107,13 +107,6 @@ class _createDataState extends State<createData> {
               },
               child: Text('Create Database'),
             ),
-            // ElevatedButton(
-            //   onPressed: () async {
-            //     await databaseInstance._onCreateLogin();
-            //     Navigator.pop(context);
-            //   },
-            //   child: Text('Create Database Login'),
-            // ),
           ],
         ),
       ),

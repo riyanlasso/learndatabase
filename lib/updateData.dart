@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learndatabase/database.dart';
-import 'package:learndatabase/modelTabel.dart';
+import 'package:learndatabase/model_database/modelTabel.dart';
 
 class updateData extends StatefulWidget {
   final ProductTabel? productTabel;
@@ -12,14 +12,14 @@ class updateData extends StatefulWidget {
 
 class _updateDataState extends State<updateData> {
   DatabaseInstance databaseInstance = DatabaseInstance();
-  TextEditingController namaController = TextEditingController();
+  TextEditingController tanggalController = TextEditingController();
   TextEditingController uangController = TextEditingController();
   TextEditingController keteranganController = TextEditingController();
 
   @override
   void initState() {
     databaseInstance.database();
-    namaController.text = widget.productTabel!.name ?? '';
+    tanggalController.text = widget.productTabel!.tanggal ?? '';
     uangController.text = widget.productTabel!.uang ?? '';
     keteranganController.text = widget.productTabel!.keterangan ?? '';
     super.initState();
@@ -32,10 +32,10 @@ class _updateDataState extends State<updateData> {
       body: Center(
         child: Column(
           children: [
-            Text('nama'),
-            TextField(
-              controller: namaController,
-            ),
+            // Text('nama'),
+            // TextField(
+            //   controller: namaController,
+            // ),
             Text('jumlah uang'),
             TextField(
               controller: uangController,
@@ -47,7 +47,7 @@ class _updateDataState extends State<updateData> {
             ElevatedButton(
                 onPressed: () async {
                   await databaseInstance.update(widget.productTabel!.id!, {
-                    'nama': namaController.text,
+                    'tanggal': tanggalController.text,
                     'jumlah_Uang': uangController.text,
                     'keterangan': keteranganController.text,
                     'updated_at': DateTime.now().toString(),

@@ -1,9 +1,10 @@
 class ProductTabel {
   int? id;
-  String? name, uang, keterangan, createdAt, updatedAt;
+  String? tanggal, status, uang, keterangan, createdAt, updatedAt;
   ProductTabel(
       {this.id,
-      this.name,
+      this.tanggal,
+      this.status,
       this.uang,
       this.keterangan,
       this.createdAt,
@@ -11,7 +12,8 @@ class ProductTabel {
   factory ProductTabel.fromJson(Map<String, dynamic> json) {
     return ProductTabel(
         id: json['id'],
-        name: json['nama'],
+        tanggal: json['tanggal'],
+        status: json['status'],
         uang: json['jumlah_Uang'],
         keterangan: json['keterangan'],
         createdAt: json['created_at'],
